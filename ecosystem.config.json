@@ -5,14 +5,15 @@
       "script": "./server.js",
       "watch": true,
       "ignore_watch": [
-        "node_modules"
-        , "content.txt"
+        "node_modules",
+        "content.txt",
+        "exec.bat"
       ],
       "log_date_format": "DD/MM/YYYY HH:mm Z",
       "env": {
         "NODE_ENV": "production",
         "NODE_PORT": 8083,
-        "PRINTER_LOCATION": "\\\\PLA-TINTAS02\\ZDesigner ZT230-200dpi ZPL"
+        "PRINTER_REB": "\\\\pla-ti03\\ElginT"
       }
     }
   ]
