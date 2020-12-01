@@ -40,9 +40,10 @@ app.get('/print/:setor', (req, res) => {
                 , 'operador'
                 , 'qtd'
                 , 'data'
-                , 'operador'
                 , 'turno'
                 , 'descricao'
+                , 'validade'
+                , 'tara'
             ]);
             if (invalidfields.length > 0)
                 return res.json({ success: false, msg: `Necessários informar os seguintes campos: ${invalidfields.join(',')}` });
@@ -54,13 +55,13 @@ app.get('/print/:setor', (req, res) => {
 q1000
 N
 A100,20,0,2,1,1,N,"PLASTRELA EMBALAGENS FLEXIVEIS LTDA."
-A100,60,0,2,1,1,N,"${q.descricao.substring(1, 51)}"
+A100,60,0,2,1,1,N,"${q.descricao.substring(0, 51)}"
 A100,100,0,2,1,1,N,"${q.descricao.substring(51, 102)}"
 A105,140,0,3,1,1,N,"Pedido: ${q.pedido}  Produto: ${q.produto}  OP: ${q.op}"
 A100,180,0,2,1,1,N,"Data    : ${q.data}  Operador  : ${q.operador}"
 A100,220,0,2,1,1,N,"Turno   : ${q.turno}"
-A350,220,0,3,1,1,N,"N. Bobina ____ Tara  : 0,000"
-A105,260,0,3,1,1,N,"        Produto valido por 12 meses"
+A350,220,0,3,1,1,N,"N. Bobina ____ Tara  : ${q.tara}"
+A105,260,0,3,1,1,N,"        Produto valido por ${q.validade} meses"
 P
 `;
             }
