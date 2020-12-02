@@ -13,7 +13,7 @@
       "env": {
         "NODE_ENV": "production",
         "NODE_PORT": 8083,
-        "PRINTER_REB": "\\\\pla-ti03\\ElginT",
+        "PRINTER_REB": "\\\\dc01\\ELGIN01_REB-RS",
         "PRINTER_CS": "\\\\pla-corte01\\ZM400"
       }
     }
