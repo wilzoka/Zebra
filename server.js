@@ -32,7 +32,7 @@ app.get('/print/:setor', (req, res) => {
             return res.json({ success: false, msg: `PRINTER_${setor} não configurada` });
         }
         let content = '';
-        if (setor == 'REB') {
+        if (setor == 'REB' || setor == 'CS') {
             const invalidfields = getEmptyFields(req.query, [
                 'op'
                 , 'pedido'
@@ -65,8 +65,6 @@ A105,260,0,3,1,1,N,"        Produto valido por ${q.validade} meses"
 P
 `;
             }
-        } else if (setor == 'CS') {
-            return res.json({ success: false, msg: `${setor} sem impressão configurada` });
         } else {
             return res.json({ success: false, msg: `${setor} sem impressão configurada` });
         }
