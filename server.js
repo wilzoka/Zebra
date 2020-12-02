@@ -32,7 +32,7 @@ app.get('/print/:setor', (req, res) => {
             return res.json({ success: false, msg: `PRINTER_${setor} não configurada` });
         }
         let content = '';
-        if (setor == 'REB' || setor == 'CS') {
+        if (setor == 'REB') {
             const invalidfields = getEmptyFields(req.query, [
                 'op'
                 , 'pedido'
@@ -62,6 +62,39 @@ A100,180,0,2,1,1,N,"Data    : ${q.data}  Operador  : ${q.operador}"
 A100,220,0,2,1,1,N,"Turno   : ${q.turno}"
 A350,220,0,3,1,1,N,"N. Bobina ____ Tara  : ${q.tara}"
 A105,260,0,3,1,1,N,"        Produto valido por ${q.validade} meses"
+P
+`;
+            }
+        } else if (setor == 'CS') {
+            const invalidfields = getEmptyFields(req.query, [
+                'op'
+                , 'pedido'
+                , 'produto'
+                , 'operador'
+                , 'qtd'
+                , 'data'
+                , 'turno'
+                , 'descricao'
+                , 'validade'
+                , 'tara'
+            ]);
+            if (invalidfields.length > 0)
+                return res.json({ success: false, msg: `Necessários informar os seguintes campos: ${invalidfields.join(',')}` });
+            const q = req.query;
+            const qtd = parseInt(req.query.qtd);
+            for (let i = 0; i < qtd; i++) {
+                content +=
+                    `rN
+q1000
+N
+A190,20,0,2,1,1,N,"PLASTRELA EMBALAGENS FLEXIVEIS LTDA."
+A190,60,0,2,1,1,N,"${q.descricao.substring(0, 51)}"
+A190,100,0,2,1,1,N,"${q.descricao.substring(51, 102)}"
+A195,140,0,3,1,1,N,"Pedido: ${q.pedido}  Produto: ${q.produto}  OP: ${q.op}"
+A190,180,0,2,1,1,N,"Data    : ${q.data}  Operador  : ${q.operador}"
+A190,220,0,2,1,1,N,"Turno   : ${q.turno}"
+A400,220,0,3,1,1,N,"N. Bobina ____ Tara  : ${q.tara}"
+A195,260,0,3,1,1,N,"        Produto valido por ${q.validade} meses"
 P
 `;
             }
