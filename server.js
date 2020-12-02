@@ -88,13 +88,13 @@ P
 q1000
 N
 A190,20,0,2,1,1,N,"PLASTRELA EMBALAGENS FLEXIVEIS LTDA."
-A190,60,0,2,1,1,N,"${q.descricao.substring(0, 51)}"
-A190,100,0,2,1,1,N,"${q.descricao.substring(51, 102)}"
-A195,140,0,3,1,1,N,"Pedido: ${q.pedido}  Produto: ${q.produto}  OP: ${q.op}"
-A190,180,0,2,1,1,N,"Data    : ${q.data}  Operador  : ${q.operador}"
-A190,220,0,2,1,1,N,"Turno   : ${q.turno}"
-A400,220,0,3,1,1,N,"N. Bobina ____ Tara  : ${q.tara}"
-A195,260,0,3,1,1,N,"        Produto valido por ${q.validade} meses"
+A190,50,0,2,1,1,N,"${q.descricao.substring(0, 51)}"
+A190,80,0,2,1,1,N,"${q.descricao.substring(51, 102)}"
+A195,110,0,3,1,1,N,"Pedido: ${q.pedido}  Produto: ${q.produto}  OP: ${q.op}"
+A190,140,0,2,1,1,N,"Data    : ${q.data}  Operador  : ${q.operador}"
+A190,170,0,2,1,1,N,"Turno   : ${q.turno}"
+A400,200,0,3,1,1,N,"N. Bobina ____ Tara  : ${q.tara}"
+A195,230,0,3,1,1,N,"        Produto valido por ${q.validade} meses"
 P
 `;
             }
